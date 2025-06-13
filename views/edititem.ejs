@@ -1,1 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit Task</title>
+    <style>
+        /* Same Sexy Minimal Theme */
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #ddd;
+            --input-bg: #2a2a2a;
+            --btn-bg: #6f42c1;
+            --btn-hover: #8257e5;
+        }
 
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 350px;
+            margin: auto;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: bold;
+            color: #b39ddb;
+        }
+
+        /* Form */
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: var(--input-bg);
+            border-radius: 10px;
+            color: var(--text-color);
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .btn {
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex: 1;
+            margin: 0 5px;
+        }
+
+        .save-btn { background-color: var(--btn-bg); color: white; }
+        .save-btn:hover { background-color: var(--btn-hover); }
+
+        .cancel-btn { background-color: var(--input-bg); color: #bbb; }
+        .cancel-btn:hover { background-color: #333; }
+    </style>
+</head>
+<body>
+    <h1>Edit Task</h1>
+    <div class="container">
+        <form action="/todo/edit/<%= todoIdx %>" method="post">
+            <input type="hidden" name="_method" value="PUT">
+            <input type="text" name="editTodo" value="<%- todo %>" autofocus />
+            <div class="buttons">
+                <input type="submit" value="Save" class="btn save-btn" />
+                <a href="/todo" class="btn cancel-btn">Cancel</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
